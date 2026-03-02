@@ -1,0 +1,465 @@
+/* =====================
+   Variables
+===================== */
+:root {
+  --color-bg: #eef2f6;
+  --color-paper: #ffffff;
+  --color-text: #1f2937;
+  --color-text-dark: #111827;
+  --color-muted: #5f6b7a;
+  --color-accent: #37a0a2;
+  --color-accent-soft: #c4e4e5;
+  --color-chip: #9ca3af;
+  --color-border: #e2e8f0;
+
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 2.5rem;
+
+  --radius-sm: 0.375rem;
+  --radius-md: 0.625rem;
+
+  --font-base: "Avenir Next", "Segoe UI", sans-serif;
+  --font-heading: "Trebuchet MS", "Avenir Next", sans-serif;
+}
+
+/* =====================
+   Base
+===================== */
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: linear-gradient(160deg, #f5f7fa 0%, var(--color-bg) 100%);
+  color: var(--color-text);
+  font-family: var(--font-base);
+  line-height: 1.45;
+  padding: var(--space-6) var(--space-4);
+}
+
+a {
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+  color: var(--color-accent);
+}
+
+/* =====================
+   Layout
+===================== */
+.cv {
+  width: min(100%, 58rem);
+  margin: 0 auto;
+  background: var(--color-paper);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: 0 16px 40px rgba(27, 39, 53, 0.08);
+  overflow: hidden;
+}
+
+.cv-header {
+  padding: var(--space-7) var(--space-7) var(--space-5);
+  display: grid;
+  gap: var(--space-4);
+  background-color: var(--color-paper);
+}
+
+.cv-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  padding: 0 var(--space-7) var(--space-7);
+}
+
+
+
+/* =====================
+   Components
+===================== */
+.name {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 3vw, 2.8rem);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--color-text-dark);
+}
+
+.role {
+  margin: var(--space-2) 0 0;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--color-accent);
+  padding-bottom: 0.4rem;
+  border-bottom: 2px solid var(--color-accent);
+  display: inline-block;
+}
+
+.summary {
+  margin: 0;
+  color: var(--color-text-dark);
+}
+
+.contact-list {
+  margin: var(--space-2) 0 0 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4) var(--space-6);
+}
+
+.contact-list li {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+.icon-box {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.8rem;
+  height: 1.8rem;
+  background-color: var(--color-accent);
+  color: white;
+  border-radius: 4px;
+  font-size: 0.95rem;
+}
+
+.section {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.section-title {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-text-dark);
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.section-title::after {
+  content: "";
+  height: 2px;
+  flex: 1;
+  background: var(--color-border);
+}
+
+.section-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  color: var(--color-accent);
+}
+
+.skills-grid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.skill-group {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.skill-category {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--color-text-dark);
+  min-width: 140px;
+  /* Aligns categories neatly */
+}
+
+.skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  flex: 1;
+}
+
+.tag {
+  display: inline-block;
+  background-color: var(--color-chip);
+  color: white;
+  padding: 0.25rem 0.6rem;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.entry,
+.mini-entry {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.entry+.entry,
+.mini-entry+.mini-entry {
+  border-top: 1px solid var(--color-border);
+  padding-top: var(--space-4);
+}
+
+.entry-head h3,
+.mini-entry h3 {
+  margin: 0;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--color-text-dark);
+}
+
+.entry-head {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.date-range {
+  margin: 0;
+  color: var(--color-accent);
+  font-size: 0.95rem;
+  font-style: italic;
+  font-weight: 500;
+}
+
+.company-name {
+  margin: 0;
+  color: var(--color-text-dark);
+  font-size: 0.95rem;
+  font-style: italic;
+}
+
+.achievements-label {
+  margin: var(--space-2) 0 0 0;
+  color: var(--color-accent);
+  font-size: 0.95rem;
+  font-style: italic;
+  font-weight: 500;
+}
+
+.bullet-list {
+  margin: var(--space-1) 0 0 0;
+  padding-left: 1.2rem;
+  display: grid;
+  gap: var(--space-2);
+  list-style: none;
+}
+
+.bullet-list li {
+  position: relative;
+  color: var(--color-text-dark);
+  line-height: 1.45;
+  font-size: 0.95rem;
+}
+
+.bullet-list li::before {
+  content: "◇";
+  position: absolute;
+  left: -1.2rem;
+  color: var(--color-chip);
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.fact-list {
+  margin: 0;
+  display: grid;
+  gap: var(--space-3);
+}
+
+.fact-list div {
+  display: flex;
+  gap: var(--space-2);
+  border-bottom: 1px dashed var(--color-border);
+  padding-bottom: var(--space-2);
+  align-items: center;
+}
+
+.fact-list dt {
+  font-weight: 600;
+  color: var(--color-text-dark);
+}
+
+.fact-list dd {
+  margin: 0;
+  color: var(--color-muted);
+  font-size: 0.95rem;
+  font-style: italic;
+}
+
+.mini-entry p {
+  margin: 0;
+  color: var(--color-text-dark);
+}
+
+.mini-entry p.meta {
+  color: var(--color-muted);
+}
+
+/* =====================
+   Responsive / Print
+===================== */
+@media (max-width: 860px) {
+  body {
+    padding: 0;
+    background: var(--color-paper);
+  }
+
+  .cv {
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .cv-header,
+  .cv-content {
+    padding: var(--space-5);
+  }
+}
+
+@media print {
+  @page {
+    size: A4;
+    margin: 10mm;
+  }
+
+  body {
+    background: white;
+    padding: 0;
+    color: var(--color-text-dark);
+  }
+
+  .cv {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .cv-header,
+  .cv-content {
+    padding: var(--space-2) var(--space-3) !important;
+  }
+
+  html {
+    font-size: 13.5px;
+    /* Aggressive optical scaling for A4 2-page fit */
+    line-height: 1.35;
+  }
+
+  .name {
+    font-size: 2.2rem !important;
+  }
+
+  .role {
+    font-size: 1rem !important;
+    margin-top: 0 !important;
+    padding-bottom: 0.2rem !important;
+  }
+
+  .summary {
+    font-size: 0.95rem !important;
+    margin: 0 !important;
+  }
+
+  .cv-content {
+    gap: var(--space-3) !important;
+  }
+
+  .section {
+    gap: var(--space-2) !important;
+  }
+
+  .section-title {
+    font-size: 1.05rem !important;
+    margin: 0 !important;
+  }
+
+  .entry+.entry,
+  .mini-entry+.mini-entry {
+    padding-top: var(--space-2) !important;
+  }
+
+  .entry-head h3 {
+    font-size: 1.05rem !important;
+  }
+
+  .achievements-label {
+    margin: 0 !important;
+  }
+
+  .bullet-list {
+    gap: 0.1rem !important;
+  }
+
+  .bullet-list li {
+    line-height: 1.35 !important;
+  }
+
+  /* Fix the contact wrapping issue */
+  .contact-list {
+    flex-wrap: nowrap !important;
+    gap: var(--space-3) var(--space-4) !important;
+    justify-content: flex-start;
+  }
+
+  .contact-list li {
+    white-space: nowrap;
+  }
+
+  /* Force background colors (like the teal accents) to print */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Avoid breaking inside entries or skill grids */
+  .entry,
+  .skills-grid {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  .section-title {
+    page-break-after: avoid;
+    break-after: avoid;
+  }
+}
